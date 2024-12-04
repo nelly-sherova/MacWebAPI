@@ -37,6 +37,17 @@ namespace MacWebApi.Models
         /// </summary>
         [ForeignKey("RoleId")]  
         public int RoleId { get; set; } 
+        /// <summary>
+        /// Роль
+        /// </summary>
         public Role Role { get; set; }
+        /// <summary>
+        /// Список созданных заказов пользователя
+        /// </summary>
+        public ICollection<Order> CreatedOrders { get; set; } 
+        /// <summary>
+        /// Список подтвержденных заказов пользователя
+        /// </summary>
+        public ICollection<Order> ConfirmedOrders { get; set; }
     }
 }

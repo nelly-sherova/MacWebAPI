@@ -26,8 +26,22 @@ namespace MacWebApi.Data
             modelBuilder.Entity<Product>()
                 .HasOne(o => o.Order)
                 .WithMany(p => p.Products)
-                .HasForeignKey(p =>p.OrderId);  
-
+                .HasForeignKey(p =>p.OrderId);
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.City)
+                .WithMany(c => c.Orders)
+                .HasForeignKey(o => o.CityId);
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.CreatedByUser)
+                .WithMany(u => u.CreatedOrders)
+                .HasForeignKey(o => o.CreatedByUserId);
+            modelBuilder.Entity<Order>()
+                .HasOne(o=>o.ConfirmedByUser)
+                .WithMany(u => u.ConfirmedOrders)
+                .HasForeignKey(o => o.ConfirmedByUserId);
+            modelBuilder.Entity<City>()
+                .Property(c => c.Description)
+                .IsRequired(false);
         }
 
         public DbSet<Product> Products { get; set; }
@@ -35,6 +49,7 @@ namespace MacWebApi.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<City> Cities { get; set; }  
 
     }
 }
