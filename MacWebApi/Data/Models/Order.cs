@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MacWebApi.Models
+namespace MacWebApi.Data.Models
 {
     public class Order
     {
@@ -66,6 +66,6 @@ namespace MacWebApi.Models
         /// <summary>
         /// Статус подстверждения заказа
         /// </summary>
-        public bool IsConfirmed {get; set;} 
+        public bool IsConfirmed { get; set; }
     }
 }

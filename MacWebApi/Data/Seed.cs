@@ -1,4 +1,4 @@
-﻿using MacWebApi.Models;
+﻿using MacWebApi.Data.Models;
 
 namespace MacWebApi.Data
 {

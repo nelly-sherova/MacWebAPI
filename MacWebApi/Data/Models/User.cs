@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MacWebApi.Models
+namespace MacWebApi.Data.Models
 {
     public class User
     {
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public int Id { get; set; } 
+        public int Id { get; set; }
         /// <summary>
         /// Фамилия 
         /// </summary>
@@ -15,7 +15,7 @@ namespace MacWebApi.Models
         /// <summary>
         /// Имя
         /// </summary>
-        public string LastName { get; set; } 
+        public string LastName { get; set; }
         /// <summary>
         /// Отчество 
         /// </summary>
@@ -23,7 +23,7 @@ namespace MacWebApi.Models
         /// <summary>
         /// Электронная почта
         /// </summary>
-        public string Email { get; set; }   
+        public string Email { get; set; }
         /// <summary>
         /// Пароль
         /// </summary>
@@ -35,8 +35,8 @@ namespace MacWebApi.Models
         /// <summary>
         /// Связь пользователя с его ролью
         /// </summary>
-        [ForeignKey("RoleId")]  
-        public int RoleId { get; set; } 
+        [ForeignKey("RoleId")]
+        public int RoleId { get; set; }
         /// <summary>
         /// Роль
         /// </summary>
@@ -44,7 +44,7 @@ namespace MacWebApi.Models
         /// <summary>
         /// Список созданных заказов пользователя
         /// </summary>
-        public ICollection<Order> CreatedOrders { get; set; } 
+        public ICollection<Order> CreatedOrders { get; set; }
         /// <summary>
         /// Список подтвержденных заказов пользователя
         /// </summary>

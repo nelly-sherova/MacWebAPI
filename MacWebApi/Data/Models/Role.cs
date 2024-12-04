@@ -1,4 +1,4 @@
-﻿namespace MacWebApi.Models
+﻿namespace MacWebApi.Data.Models
 {
     public class Role
     {
@@ -17,7 +17,7 @@
         /// <summary>
         /// Пользователи с этой ролью 
         /// </summary>
-        public ICollection<User> Users { get; set; }    
+        public ICollection<User> Users { get; set; }
 
     }
 }

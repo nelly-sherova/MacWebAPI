@@ -1,19 +1,19 @@
-﻿namespace MacWebApi.Models
+﻿namespace MacWebApi.Data.Models
 {
     public class Category
     {
         /// <summary>
         ///     Идентификатор
         /// </summary>
-        public int Id { get; set; } 
+        public int Id { get; set; }
         /// <summary>
         /// Название
         /// </summary>
-        public string Name { get; set; }    
+        public string Name { get; set; }
         /// <summary>
         /// Описание 
         /// </summary>
-        public string? Description { get; set; } 
+        public string? Description { get; set; }
         /// <summary>
         /// Продукты
         /// </summary>
