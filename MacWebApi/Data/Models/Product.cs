@@ -1,21 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MacWebApi.Models
+namespace MacWebApi.Data.Models
 {
     public class Product
     {
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public int Id { get; set; } 
+        public int Id { get; set; }
         /// <summary>
         /// Название
         /// </summary>
-        public string Name { get; set; }    
+        public string Name { get; set; }
         /// <summary>
         /// Описание
         /// </summary>
-        public string? Description { get; set; } 
+        public string? Description { get; set; }
         /// <summary>
         /// Основная цена
         /// </summary>
@@ -23,7 +23,7 @@ namespace MacWebApi.Models
         /// <summary>
         /// Прежняя цена
         /// </summary>
-        public decimal? OldPrice { get; set; }   
+        public decimal? OldPrice { get; set; }
         /// <summary>
         /// Процент скидки 
         /// </summary>
@@ -41,7 +41,7 @@ namespace MacWebApi.Models
         /// Внешний ключ для связи заказа и продуктов
         /// </summary>
         [ForeignKey("OrderId")]
-        public int OrderId { get; set; }    
+        public int OrderId { get; set; }
         /// <summary>
         /// Заказ 
         /// </summary>
