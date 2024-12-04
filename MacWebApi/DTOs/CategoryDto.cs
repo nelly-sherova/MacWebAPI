@@ -16,7 +16,7 @@ namespace MacWebApi.DTOs
         /// <summary>
         /// Описание 
         /// </summary>
-        public required string Description { get; set; }
+        public required string? Description { get; set; }
 
     }
 }
