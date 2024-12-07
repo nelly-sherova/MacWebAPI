@@ -2,7 +2,7 @@
 
 namespace MacWebApi.Interfaces
 {
-    public class IUserRepository
+    public interface IUserRepository
     {
         ICollection<User> GetUsers();
     }

@@ -67,5 +67,17 @@ namespace MacWebApi.Data.Models
         /// Статус подстверждения заказа
         /// </summary>
         public bool IsConfirmed { get; set; }
+        /// <summary>
+        /// Дата и время регистации заказа
+        /// </summary>
+        public DateTime DateCreate { get; set; }
+        /// <summary>
+        /// Дата и время подтверждения заказа
+        /// </summary>
+        public DateTime DateConfirmed { get; set; }
+        /// <summary>
+        /// Дата и время доставки заказа
+        /// </summary>
+        public DateTime? DateOfDelivery {get; set;}
     }
 }

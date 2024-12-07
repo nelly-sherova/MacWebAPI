@@ -49,5 +49,9 @@ namespace MacWebApi.Data.Models
         /// Список подтвержденных заказов пользователя
         /// </summary>
         public ICollection<Order> ConfirmedOrders { get; set; }
+        /// <summary>
+        /// Активность пользователя  1 - Активен 0 - нет 
+        /// </summary>
+        public bool IsActive { get; set; }
     }
 }

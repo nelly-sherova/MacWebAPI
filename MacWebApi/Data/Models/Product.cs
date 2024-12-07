@@ -46,7 +46,10 @@ namespace MacWebApi.Data.Models
         /// Заказ 
         /// </summary>
         public Order Order { get; set; }
-
+        /// <summary>
+        /// Есть ли товар в наличии 
+        /// </summary>
+        public bool Exist { get; set; }
 
     }
 }
