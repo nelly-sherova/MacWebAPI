@@ -4,10 +4,10 @@ using MacWebApi.Interfaces;
 
 namespace MacWebApi.Repositories
 {
-    public class CityReppository : ICityRepository
+    public class CityRepository : ICityRepository
     {
-        private readonly DataContext context; 
-        public CityReppository(DataContext context)
+        private DataContext context; 
+        public CityRepository(DataContext context)
         {
             this.context = context;
         }

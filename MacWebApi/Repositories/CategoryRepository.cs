@@ -6,7 +6,7 @@ namespace MacWebApi.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly DataContext _context; 
+        private  DataContext _context; 
         public CategoryRepository(DataContext context) 
         {
             _context = context;

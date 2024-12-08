@@ -2,7 +2,12 @@ using MacWebApi.Data;
 using MacWebApi.Mapping;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-
+using MacWebApi.Interfaces;
+using MacWebApi.Repositories;
+using MacWebApi.Services.Category;
+using MacWebApi.Services.City;
+using MacWebApi.Services.Order;
+using MacWebApi.Services.Prduct;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +18,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();  
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();    
+builder.Services.AddScoped<IOrderService, OrderService>();  
+builder.Services.AddScoped<IProductRepository, ProductRepository>();    
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
