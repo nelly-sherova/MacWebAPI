@@ -1,4 +1,4 @@
-﻿using MacWebApi.Interfaces;
+﻿using MacWebApi.Repositories.Role;
 
 namespace MacWebApi.Services.Role
 {

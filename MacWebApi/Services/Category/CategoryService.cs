@@ -1,5 +1,5 @@
-﻿using MacWebApi.Interfaces;
-using MacWebApi.Repositories;
+﻿using MacWebApi.Repositories;
+using MacWebApi.Repositories.Category;
 
 namespace MacWebApi.Services.Category
 {

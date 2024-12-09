@@ -1,19 +1,18 @@
 ﻿using MacWebApi.Data;
 using MacWebApi.Data.Models;
-using MacWebApi.Interfaces;
 
-namespace MacWebApi.Repositories
+namespace MacWebApi.Repositories.City
 {
     public class CityRepository : ICityRepository
     {
-        private DataContext context; 
+        private DataContext context;
         public CityRepository(DataContext context)
         {
             this.context = context;
         }
-        public ICollection<City> GetCities()
+        public ICollection<Data.Models.City> GetCities()
         {
-            return context.Cities.OrderBy(c=>c.Id).ToList();    
+            return context.Cities.OrderBy(c => c.Id).ToList();
         }
     }
 }

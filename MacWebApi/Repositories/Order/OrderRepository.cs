@@ -1,8 +1,7 @@
 ﻿using MacWebApi.Data;
 using MacWebApi.Data.Models;
-using MacWebApi.Interfaces;
 
-namespace MacWebApi.Repositories
+namespace MacWebApi.Repositories.Order
 {
     public class OrderRepository : IOrderRepository
     {
@@ -11,9 +10,9 @@ namespace MacWebApi.Repositories
         {
             this.context = context;
         }
-        public ICollection<Order> GetOrders()
+        public ICollection<Data.Models.Order> GetOrders()
         {
-            return context.Orders.OrderBy(o => o.Id).ToList();  
+            return context.Orders.OrderBy(o => o.Id).ToList();
         }
     }
 }

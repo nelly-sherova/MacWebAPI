@@ -1,4 +1,4 @@
-﻿using MacWebApi.Interfaces;
+﻿using MacWebApi.Repositories.City;
 
 namespace MacWebApi.Services.City
 {

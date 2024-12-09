@@ -1,5 +1,5 @@
 ﻿using MacWebApi.Data.Models;
-using MacWebApi.Interfaces;
+using MacWebApi.Repositories.Product;
 using System.Security.AccessControl;
 
 namespace MacWebApi.Services.Prduct
