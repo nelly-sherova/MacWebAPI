@@ -2,18 +2,18 @@ using MacWebApi.Data;
 using MacWebApi.Mapping;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using MacWebApi.Services.Category;
-using MacWebApi.Services.City;
-using MacWebApi.Services.Order;
 using MacWebApi.Services.Prduct;
 using MacWebApi.Services.Role;
 using MacWebApi.Services.User;
-using MacWebApi.Repositories.Category;
-using MacWebApi.Repositories.City;
-using MacWebApi.Repositories.Order;
 using MacWebApi.Repositories.Product;
 using MacWebApi.Repositories.Role;
 using MacWebApi.Repositories.User;
+using MacWebApi.Services.CategoryServices;
+using MacWebApi.Repositories.CityRepository;
+using MacWebApi.Repositories.CategoryRepositories;
+using MacWebApi.Services.CityServices;
+using MacWebApi.Repositories.OrderCategories;
+using MacWebApi.Services.OrderServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

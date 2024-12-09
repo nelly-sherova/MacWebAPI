@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MacWebApi.Data.Models;
 using MacWebApi.DTOs;
-using MacWebApi.Services.Order;
+using MacWebApi.Services.OrderServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +27,33 @@ namespace MacWebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            return Ok(orders);
+        }
+        [HttpGet("bydate")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Order>))]
+        public IActionResult GetOrdersByDate(DateTime? startDate, DateTime? endDate)
+        {
+            var orders = mapper.Map<List<Order>>(orderService.GetAllOrderdsByDate(startDate, endDate));
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(orders);
+        }
+        [HttpGet("togoes")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Order>))]
+        public IActionResult GetAllToGoes()
+        {
+            var orders = mapper.Map<List<Order>>(orderService.GetAllToGoes());  
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(orders);
+        }
+        [HttpGet("intheholls")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Order>))]
+        public IActionResult GetAllInTheHolls()
+        {
+            var orders = mapper.Map<List<Order>>(orderService.GetAllInTheHolls());
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             return Ok(orders);
         }
     }

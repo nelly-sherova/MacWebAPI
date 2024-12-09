@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MacWebApi.Data.Models;
 using MacWebApi.DTOs;
-using MacWebApi.Services.Category;
-using MacWebApi.Services.City;
+using MacWebApi.Services.CategoryServices;
+using MacWebApi.Services.CityServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +29,17 @@ namespace MacWebApi.Controllers
                 return BadRequest(ModelState);
 
             return Ok(cities);
+        }
+        [HttpGet("{cityId}")]
+        [ProducesResponseType(200, Type = typeof(City))]
+        [ProducesResponseType(400)]
+        public IActionResult GetCity(int cityId)
+        {
+            var city = _mapper.Map<CityDto>(cityService.GetCity(cityId));
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(city);
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MacWebApi.Data.Models;
 using MacWebApi.DTOs;
-using MacWebApi.Services.Category;
+using MacWebApi.Services.CategoryServices;
 using MacWebApi.Services.Prduct;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

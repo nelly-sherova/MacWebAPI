@@ -1,7 +1,7 @@
 ﻿using MacWebApi.Data;
 using MacWebApi.Data.Models;
 
-namespace MacWebApi.Repositories.Category
+namespace MacWebApi.Repositories.CategoryRepositories
 {
     public class CategoryRepository : ICategoryRepository
     {
@@ -10,10 +10,13 @@ namespace MacWebApi.Repositories.Category
         {
             _context = context;
         }
-        public ICollection<Data.Models.Category> GetCategories()
+        public ICollection<Category> GetCategories()
         {
             return _context.Categories.OrderBy(c => c.Id).ToList();
         }
-
+        public Category GetCategory(int id)
+        {
+            return _context.Categories.Where(c => c.Id == id).FirstOrDefault();
+        }
     }
 }
