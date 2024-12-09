@@ -79,5 +79,9 @@ namespace MacWebApi.Data.Models
         /// Дата и время доставки заказа
         /// </summary>
         public DateTime? DateOfDelivery {get; set;}
+        /// <summary>
+        /// Статус доставки товара 
+        /// </summary>
+        public bool IsDelivery { get; set; }
     }
 }

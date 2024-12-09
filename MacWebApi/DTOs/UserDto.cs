@@ -44,5 +44,9 @@ namespace MacWebApi.DTOs
         /// Связь пользователя с его ролью
         /// </summary>
         public required int RoleId { get; set; }
+        /// <summary>
+        /// Статус доставки товара 
+        /// </summary>
+        public bool IsDelivery { get; set; }
     }
 }

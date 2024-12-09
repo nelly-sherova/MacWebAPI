@@ -31,9 +31,9 @@ namespace MacWebApi.Controllers
         }
         [HttpGet("bydate")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Order>))]
-        public IActionResult GetOrdersByDate(DateTime? startDate, DateTime? endDate)
+        public IActionResult GetOrdersByDate(DateTime? startDate, DateTime? endDate, bool isToGo)
         {
-            var orders = mapper.Map<List<Order>>(orderService.GetAllOrderdsByDate(startDate, endDate));
+            var orders = mapper.Map<List<Order>>(orderService.GetAllOrderdsByDate(startDate, endDate, isToGo));
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(orders);

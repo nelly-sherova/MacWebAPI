@@ -14,7 +14,7 @@ namespace MacWebApi.Services.OrderServices
         {
             return orderRepository.GetOrders();
         }
-        public ICollection<Order> GetAllOrderdsByDate(DateTime? dateStart, DateTime? dateEnd, bool isToGo)
+        public ICollection<Order> GetAllOrderdsByDateIsToGo(DateTime? dateStart, DateTime? dateEnd, bool? isToGo)
         {
             var orders = orderRepository.GetOrders();
 
@@ -34,7 +34,26 @@ namespace MacWebApi.Services.OrderServices
 
             return orders;
         }
+        public ICollection<Order> GetAllOrderdsByDate(DateTime? dateStart, DateTime? dateEnd, bool? isToGo)
+        {
+            var orders = orderRepository.GetOrders();
 
+            if (!dateStart.HasValue && !dateEnd.HasValue)
+            {
+                return orders.Where(o => o.IsToGo == isToGo).OrderBy(o => o.DateCreate).ToList();
+            }
+
+            if (dateStart.HasValue && !dateEnd.HasValue)
+            {
+                orders = orders.Where(o => o.DateCreate == dateStart && o.IsToGo == isToGo).ToList();
+            }
+            else if (dateStart.HasValue && dateEnd.HasValue)
+            {
+                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd && o.IsToGo == isToGo).ToList();
+            }
+
+            return orders;
+        }
         public ICollection<Order> GetAllToGoes()
         {
             return orderRepository.GetOrders().Where(c => c.IsToGo == true).ToList();
