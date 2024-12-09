@@ -8,6 +8,8 @@ using MacWebApi.Services.Category;
 using MacWebApi.Services.City;
 using MacWebApi.Services.Order;
 using MacWebApi.Services.Prduct;
+using MacWebApi.Services.Role;
+using MacWebApi.Services.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,10 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();  
 builder.Services.AddScoped<IProductRepository, ProductRepository>();    
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();  
+builder.Services.AddScoped<IRoleService, RoleSevice>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
