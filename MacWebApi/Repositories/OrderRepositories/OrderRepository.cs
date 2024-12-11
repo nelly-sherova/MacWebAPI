@@ -10,6 +10,12 @@ namespace MacWebApi.Repositories.OrderCategories
         {
             this.context = context;
         }
+
+        public Order GetOrder(int id)
+        {
+            return context.Orders.Where(o => o.Id == id).FirstOrDefault();
+        }
+
         public ICollection<Order> GetOrders()
         {
             return context.Orders.OrderBy(o => o.Id).ToList();

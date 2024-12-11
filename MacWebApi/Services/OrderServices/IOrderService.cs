@@ -9,8 +9,9 @@ namespace MacWebApi.Services.OrderServices
         ICollection<Order> GetAllOrderdsByDateIsDelivery(DateTime? dateStart, DateTime? dateEnd, bool IsDelivery);
         ICollection<Order> GetAllOrderdsByDateIsToGo(DateTime? dateStart, DateTime? dateEnd, bool IsTogo);
         ICollection<Order> GetAllOrderdsByDate(DateTime? dateStart, DateTime? dateEnd);
-        ICollection<Order> GetAllToGoes();
-        ICollection<Order> GetAllInTheHolls();
-       
+        ICollection<Order> GetOrdersByStatus(DateTime? dateStart, DateTime? dateEnd, int Status);
+        public Order GetOrder(int id);
+
+
     }
 }

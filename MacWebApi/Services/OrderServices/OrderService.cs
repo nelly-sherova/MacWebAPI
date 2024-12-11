@@ -14,54 +14,90 @@ namespace MacWebApi.Services.OrderServices
         {
             return orderRepository.GetOrders();
         }
-        public ICollection<Order> GetAllOrderdsByDateIsToGo(DateTime? dateStart, DateTime? dateEnd, bool? isToGo)
+ 
+        public ICollection<Order> GetAllOrderdsByDate(DateTime? dateStart, DateTime? dateEnd)
         {
             var orders = orderRepository.GetOrders();
 
             if (!dateStart.HasValue && !dateEnd.HasValue)
             {
-                return orders.Where(o => o.IsToGo == isToGo).OrderBy(o => o.DateCreate).ToList();
+                return orders.OrderBy(o => o.DateCreate).ToList();
             }
 
             if (dateStart.HasValue && !dateEnd.HasValue)
             {
-                orders = orders.Where(o => o.DateCreate == dateStart && o.IsToGo == isToGo).ToList();
+                orders = orders.Where(o => o.DateCreate == dateStart).ToList();
             }
             else if (dateStart.HasValue && dateEnd.HasValue)
             {
-                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd && o.IsToGo == isToGo).ToList();
+                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd).ToList();
             }
 
             return orders;
         }
-        public ICollection<Order> GetAllOrderdsByDate(DateTime? dateStart, DateTime? dateEnd, bool? isToGo)
+        public ICollection<Order> GetAllOrderdsByDateIsDelivery(DateTime? dateStart, DateTime? dateEnd, bool IsDelivery)
         {
             var orders = orderRepository.GetOrders();
 
             if (!dateStart.HasValue && !dateEnd.HasValue)
             {
-                return orders.Where(o => o.IsToGo == isToGo).OrderBy(o => o.DateCreate).ToList();
+                return orders.Where(o => o.IsDelivery == IsDelivery).OrderBy(o => o.DateCreate).ToList();
             }
 
             if (dateStart.HasValue && !dateEnd.HasValue)
             {
-                orders = orders.Where(o => o.DateCreate == dateStart && o.IsToGo == isToGo).ToList();
+                orders = orders.Where(o => o.DateCreate == dateStart && o.IsDelivery == IsDelivery).ToList();
             }
             else if (dateStart.HasValue && dateEnd.HasValue)
             {
-                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd && o.IsToGo == isToGo).ToList();
+                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd && o.IsDelivery == IsDelivery).ToList();
             }
 
             return orders;
         }
-        public ICollection<Order> GetAllToGoes()
+
+        public ICollection<Order> GetAllOrderdsByDateIsToGo(DateTime? dateStart, DateTime? dateEnd, bool IsTogo)
         {
-            return orderRepository.GetOrders().Where(c => c.IsToGo == true).ToList();
+            var orders = orderRepository.GetOrders();
+
+            if (!dateStart.HasValue && !dateEnd.HasValue)
+            {
+                return orders.Where(o => o.IsToGo == IsTogo).OrderBy(o => o.DateCreate).ToList();
+            }
+
+            if (dateStart.HasValue && !dateEnd.HasValue)
+            {
+                orders = orders.Where(o => o.DateCreate == dateStart && o.IsToGo == IsTogo).ToList();
+            }
+            else if (dateStart.HasValue && dateEnd.HasValue)
+            {
+                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd && o.IsToGo == IsTogo).ToList();
+            }
+
+            return orders;
         }
-        public ICollection<Order> GetAllInTheHolls()
+
+        public ICollection<Order> GetOrdersByStatus(DateTime? dateStart, DateTime? dateEnd, int Status)
         {
-            return orderRepository.GetOrders().Where(c => c.IsToGo == false).ToList();
+            var orders = orderRepository.GetOrders();
+            if (!dateStart.HasValue && !dateEnd.HasValue)
+            {
+                return orders.Where(o => o.Status == Status && o.DateCreate == DateTime.Today).OrderBy(o => o.DateCreate).ToList();
+            }
+            if (dateStart.HasValue && !dateEnd.HasValue)
+            {
+                orders = orders.Where(o => o.DateCreate == dateStart && o.Status == Status).ToList();
+            }
+            else if (dateStart.HasValue && dateEnd.HasValue)
+            {
+                orders = orders.Where(o => o.DateCreate >= dateStart && o.DateCreate <= dateEnd && o.Status == Status).ToList();
+            }
+
+            return orders;
         }
-        
+        public Order GetOrder(int id)
+        {
+            return orderRepository.GetOrder(id);
+        }
     }
 }

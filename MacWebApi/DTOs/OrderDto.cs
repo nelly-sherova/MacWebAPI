@@ -50,8 +50,8 @@ namespace MacWebApi.DTOs
         /// </summary>
         public required int? ConfirmedByUserId { get; set; }
         /// <summary>
-        /// Подтвержден ли заказ ? 
+        /// Статус подстверждения заказа
         /// </summary>
-        public required bool IsConfirmed { get; set; }
+        public int Status { get; set; }
     }
 }

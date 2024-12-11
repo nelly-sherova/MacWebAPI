@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MacWebApi.Data.Models;
 using MacWebApi.DTOs;
-using MacWebApi.Services.Role;
+using MacWebApi.Services.RoleServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +28,16 @@ namespace MacWebApi.Controllers
                 return BadRequest(ModelState);
 
             return Ok(roles);
+        }
+        [HttpGet("{roleId}")]
+        [ProducesResponseType(200, Type=typeof(Role))]
+        [ProducesResponseType(400)]
+        public IActionResult GetRole(int roleId)
+        {
+            var role = _mapper.Map<Role>(_roleService.GetRole(roleId));
+            if (!ModelState.IsValid)    
+                return BadRequest(ModelState);
+            return Ok(role);    
         }
     }
 }

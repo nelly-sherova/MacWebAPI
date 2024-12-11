@@ -38,5 +38,9 @@ namespace MacWebApi.DTOs
         public required int CategoryId { get; set; }
         [Required(ErrorMessage = "Параметр {0} не заполнено")]
         public required int OrderId { get; set; }
+        /// <summary>
+        /// Есть ли товар в наличии 
+        /// </summary>
+        public bool Exist { get; set; }
     }
 }

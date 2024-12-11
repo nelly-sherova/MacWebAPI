@@ -1,7 +1,7 @@
 ﻿using MacWebApi.Data;
 using MacWebApi.Data.Models;
 
-namespace MacWebApi.Repositories.Product
+namespace MacWebApi.Repositories.ProductRepository
 {
     public class ProductRepository : IProductRepository
     {
@@ -10,9 +10,16 @@ namespace MacWebApi.Repositories.Product
         {
             this.context = context;
         }
-        public ICollection<Data.Models.Product> GetProducts()
+
+        public Product GetProduct(int productId)
+        {
+            return context.Products.Where(p => p.Id == productId).FirstOrDefault();
+        }
+
+        public ICollection<Product> GetProducts()
         {
             return context.Products.OrderBy(p => p.Id).ToList();
         }
+
     }
 }

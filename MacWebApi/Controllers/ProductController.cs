@@ -2,9 +2,10 @@
 using MacWebApi.Data.Models;
 using MacWebApi.DTOs;
 using MacWebApi.Services.CategoryServices;
-using MacWebApi.Services.Prduct;
+using MacWebApi.Services.ProductServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace MacWebApi.Controllers
 {
@@ -30,6 +31,54 @@ namespace MacWebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            return Ok(products);
+        }
+        [HttpGet("{productId}")]
+        [ProducesResponseType(200, Type = typeof(Product))]
+        [ProducesResponseType(400)]
+        public IActionResult GetProduct(int productId)
+        {
+            var product = productService.GetProduct(productId);
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(product);
+        }
+
+        [HttpGet("existsproducts")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        public IActionResult GetExistsProducts()
+        {
+            var products = productService.GetExistsProducts();
+            if(!ModelState.IsValid) 
+                return BadRequest(ModelState);  
+            return Ok(products);    
+        }
+        [HttpGet("saleproducts")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        public IActionResult GetSaleProducts()
+        {
+            var products = productService.GetSaleProducts();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(products);
+        }
+        [HttpGet("exists/{productId}")]
+        [ProducesResponseType(200, Type = typeof(bool))]
+        [ProducesResponseType(400)]
+        public IActionResult IsExist(int productId)
+        {
+            var res = productService.IsExist(productId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(res);
+        }
+        [HttpGet("search/{name}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        public IActionResult Search(string name)
+        {
+            var products = productService.Search(name);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             return Ok(products);
         }
     }

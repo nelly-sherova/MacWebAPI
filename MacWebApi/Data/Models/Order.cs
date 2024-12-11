@@ -66,7 +66,7 @@ namespace MacWebApi.Data.Models
         /// <summary>
         /// Статус подстверждения заказа
         /// </summary>
-        public bool IsConfirmed { get; set; }
+        public int Status { get; set; }
         /// <summary>
         /// Дата и время регистации заказа
         /// </summary>
